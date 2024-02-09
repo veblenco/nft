@@ -25,7 +25,7 @@
 Add Package:
 
 ```sh
-npm install veblen/nft
+npm install veblenco/nft
 ```
 
 Use Package:

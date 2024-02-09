@@ -1,26 +1,5 @@
+import { AUTOGLYPHS_ABI } from '../abi/AutoglyphsABI';
 import { Address, PublicClient } from 'viem';
-
-const ABI_FRAGMENT = [
-  {
-    constant: true,
-    inputs: [
-      {
-        name: '_id',
-        type: 'uint256',
-      },
-    ],
-    name: 'symbolScheme',
-    outputs: [
-      {
-        name: '',
-        type: 'uint8',
-      },
-    ],
-    payable: false,
-    stateMutability: 'view',
-    type: 'function',
-  },
-] as const;
 
 const SCHEME_MAP = {
   1: ' X/\\',
@@ -38,7 +17,7 @@ const SCHEME_MAP = {
 export async function fetchAutoglyphsMetadata(client: PublicClient, tokenAddress: Address, tokenId: bigint) {
   const scheme = await client.readContract({
     address: tokenAddress,
-    abi: ABI_FRAGMENT,
+    abi: AUTOGLYPHS_ABI,
     functionName: 'symbolScheme',
     args: [tokenId],
   });

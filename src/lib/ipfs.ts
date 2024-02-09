@@ -5,7 +5,7 @@ export const getCID = (ipfsURL: URL): string | null => {
   return ipfsURL.hostname + ipfsURL.pathname;
 };
 
-export const ipfsURLToGateway = (ipfsURL: URL, gateway: URL): URL | null => {
+export const ipfsToHTTP = (ipfsURL: URL, gateway: URL): URL | null => {
   const cid = getCID(ipfsURL);
   if (!cid) {
     return null;

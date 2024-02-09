@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest';
-import { getCID, ipfsURLToGateway } from 'src/lib/ipfs';
+import { getCID, ipfsToHTTP } from 'src/lib/ipfs';
 
 test('test ipfs correct url', async () => {
   const tokenURI = new URL('ipfs://QmTTcVQWpJvX2ewhbQr15dPurtnp35knWciRjKnDQaNin5');
@@ -22,7 +22,7 @@ test('test ipfs incorrect url', async () => {
 test('test ipfsURLToGateway', async () => {
   const tokenURI = new URL('ipfs://QmTTcVQWpJvX2ewhbQr15dPurtnp35knWciRjKnDQaNin5');
   const gateway = new URL('https://cloudflare-ipfs.com');
-  const gatewayURL = ipfsURLToGateway(tokenURI, gateway);
+  const gatewayURL = ipfsToHTTP(tokenURI, gateway);
   expect(gatewayURL).toEqual(
     new URL('https://cloudflare-ipfs.com/ipfs/QmTTcVQWpJvX2ewhbQr15dPurtnp35knWciRjKnDQaNin5')
   );
@@ -31,7 +31,7 @@ test('test ipfsURLToGateway', async () => {
 test('test ipfsURLToGateway with index', async () => {
   const tokenURI = new URL('ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/1');
   const gateway = new URL('https://cloudflare-ipfs.com');
-  const gatewayURL = ipfsURLToGateway(tokenURI, gateway);
+  const gatewayURL = ipfsToHTTP(tokenURI, gateway);
   expect(gatewayURL).toEqual(
     new URL('https://cloudflare-ipfs.com/ipfs/QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/1')
   );

@@ -3,7 +3,7 @@ import { createPublicClient, getAddress, http } from 'viem';
 import { mainnet } from 'viem/chains';
 import { nft } from '../../src';
 
-test('create nftMetadata extension', async () => {
+test('create nft extension', async () => {
   const PRADA_TIME_CAPSULE_ADDRESS = getAddress('0x0e220A4F3957C17a2e780922DBC13Cb2C9aa4274');
 
   const client = createPublicClient({

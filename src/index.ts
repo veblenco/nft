@@ -1,5 +1,5 @@
-import type { NFT } from './client/nftMetadata';
-import { nft } from './client/nftMetadata';
+import type { NFT } from './client/nft';
+import { nft } from './client/nft';
 
 export type { NFT };
 

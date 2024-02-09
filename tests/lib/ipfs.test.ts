@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest';
-import { getCID, ipfsURLToGateway } from 'src/lib/ipfsTools';
+import { getCID, ipfsURLToGateway } from 'src/lib/ipfs';
 
 test('test ipfs correct url', async () => {
   const tokenURI = new URL('ipfs://QmTTcVQWpJvX2ewhbQr15dPurtnp35knWciRjKnDQaNin5');

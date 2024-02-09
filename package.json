@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "vitest run",
+    "testwatch": "vitest",
     "coverage": "vitest run --coverage",
     "prepare": "husky"
   },

@@ -1,5 +1,11 @@
-<h1 style="text-align: center">NFT</h1>
-<p style="text-align: center"><strong>NFT metadata parser</strong></p>
+<p align="center">
+    <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="./.github/img/nft-dark.svg">
+        <img alt="fenix" src="./.github/img/nft-light.svg">
+    </picture>
+    <br>
+    <strong>TypeScirpt NFT Metadata Parser</strong>
+</p>
 <p align="center">
     <img src="https://img.shields.io/github/stars/veblenco/nft.svg?style=flat-square"/>
     <img src="https://img.shields.io/github/license/veblenco/nft.svg?style=flat-square"/>
@@ -8,7 +14,7 @@
 ## Features
 
 - ⚡️ Blasting fast
-- 🔒 Typescript
+- 🔒 TypeScript
 - 🛠️ Tested
 - 🪽 Lightweight
 - 🔋 Batteries included
@@ -19,7 +25,7 @@
 Add Package:
 
 ```sh
-npm install veblenco/nft
+npm install veblen/nft
 ```
 
 Use Package:

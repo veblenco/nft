@@ -20,7 +20,7 @@ const ABI_FRAGMENT = [
     stateMutability: 'view',
     type: 'function',
   },
-];
+] as const;
 
 const SCHEME_MAP = {
   1: ' X/\\',
@@ -35,7 +35,7 @@ const SCHEME_MAP = {
   10: '#O',
 };
 
-export async function fetchAutoglyphsMetadata(client: PublicClient, tokenAddress: Address, tokenId: string) {
+export async function fetchAutoglyphsMetadata(client: PublicClient, tokenAddress: Address, tokenId: bigint) {
   const scheme = await client.readContract({
     address: tokenAddress,
     abi: ABI_FRAGMENT,

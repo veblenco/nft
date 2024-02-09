@@ -11,6 +11,6 @@ test('test autoglphys extension', async () => {
     transport: http(),
   });
 
-  const response = await fetchAutoglyphsMetadata(client, AUTOGLYPHS_CONTRACT, '1');
+  const response = await fetchAutoglyphsMetadata(client, AUTOGLYPHS_CONTRACT, 1n);
   expect(response).toEqual({ properties: { 'Symbol Scheme': 'O|-' } });
 });

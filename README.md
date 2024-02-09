@@ -7,7 +7,7 @@ NFT metadata parser
 Add Package:
 
 ```sh
-npm add veblen/nft
+npm install veblen/nft
 ```
 
 Use Package:

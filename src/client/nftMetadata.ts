@@ -1,16 +1,13 @@
-import type { Address, Client } from "viem"
+import type { Address, Client } from 'viem';
 
-export type NFTMetadata = {
-    parse: (
-        address: Address,
-        tokenId: bigint
-    ) => Promise<any>
-}
+export type NFT = {
+  parseMetadata: (address: Address, tokenId: bigint) => Promise<any>;
+};
 
-const nftMetadata = (client: Client, ipfsGateway: URL, arweaveGateway: URL): NFTMetadata => ({
-  parse: async (address, tokenId) => {
+const nft = (client: Client, ipfsGateway: URL, arweaveGateway: URL): NFT => ({
+  parseMetadata: async (address, tokenId) => {
     return null;
   },
 });
 
-export { nftMetadata };
+export { nft };

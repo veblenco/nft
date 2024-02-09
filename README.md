@@ -1,8 +1,5 @@
-<p align="center">
-    <h1>NFT</h1>
-    <br>
-    <strong>NFT metadata parser</strong>
-</p>
+<h1 style="text-align: center">NFT</h1>
+<p style="text-align: center"><strong>NFT metadata parser</strong></p>
 <p align="center">
     <img src="https://img.shields.io/github/stars/veblenco/nft.svg?style=flat-square"/>
     <img src="https://img.shields.io/github/license/veblenco/nft.svg?style=flat-square"/>

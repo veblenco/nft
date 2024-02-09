@@ -1,7 +1,7 @@
 import { expect, test } from 'vitest';
 import { createPublicClient, getAddress, http } from 'viem';
 import { mainnet } from 'viem/chains';
-import { fetchHashmasksMetadata } from '../../src/metadata/hashmasks';
+import { fetchHashmasksMetadata } from 'src/metadata/hashmasks';
 
 test('test hashmasks extension', async () => {
   const HASHMASKS_CONTRACT = getAddress('0xC2C747E0F7004F9E8817Db2ca4997657a7746928');

@@ -1,4 +1,4 @@
-import { HASHMAPS_ABI } from '../abi/HashmaskABI';
+import { HASHMAPS_ABI } from 'src/abi/HashmaskABI';
 import { Address, PublicClient } from 'viem';
 
 export async function fetchHashmasksMetadata(client: PublicClient, tokenAddress: Address, index: bigint) {

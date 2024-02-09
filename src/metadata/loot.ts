@@ -1,4 +1,4 @@
-import { LOOT_ABI } from '../abi/LootABI';
+import { LOOT_ABI } from 'src/abi/LootABI';
 import { Address, PublicClient } from 'viem';
 
 export async function fetchLootMetadata(client: PublicClient, tokenAddress: Address, tokenId: bigint) {

@@ -1,7 +1,7 @@
 import { expect, test } from 'vitest';
 import { createPublicClient, getAddress, http } from 'viem';
 import { mainnet } from 'viem/chains';
-import { fetchLootMetadata } from '../../src/metadata/loot';
+import { fetchLootMetadata } from 'src/metadata/loot';
 
 test('test loot extension', async () => {
   const expectedResponse = {

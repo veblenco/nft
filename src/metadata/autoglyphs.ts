@@ -1,4 +1,4 @@
-import { AUTOGLYPHS_ABI } from '../abi/AutoglyphsABI';
+import { AUTOGLYPHS_ABI } from 'src/abi/AutoglyphsABI';
 import { Address, PublicClient } from 'viem';
 
 const SCHEME_MAP = {

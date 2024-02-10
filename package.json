@@ -2,6 +2,7 @@
   "name": "nft",
   "version": "0.0.1",
   "description": "TypeScript NFT Metadata Parser",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "vitest run",
@@ -10,7 +11,7 @@
     "prepare": "husky"
   },
   "keywords": [
-    "typescript, nft, viem, veblen"
+    "typescript", "nft", "viem", "veblen"
   ],
   "author": "Joe Blau <joe@veblen.co>",
   "license": "MIT",

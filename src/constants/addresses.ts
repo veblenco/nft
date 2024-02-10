@@ -1,4 +1,4 @@
-import { mainnet, polygon, polygonMumbai, base } from 'viem/chains';
+import { mainnet, polygon, polygonMumbai } from 'viem/chains';
 
 export const SUPERRARE_ADDRESS = {
   [mainnet.id]: '0xb932a70A57673d89f4acfFBE830E8ed7f75Fb9e0',

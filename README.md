@@ -1,10 +1,10 @@
 <p align="center">
     <picture>
         <source media="(prefers-color-scheme: dark)" srcset="./.github/img/nft-dark.svg">
-        <img alt="fenix" src="./.github/img/nft-light.svg">
+        <img alt="veblenco/nft" src="./.github/img/nft-light.svg">
     </picture>
     <br>
-    <strong>TypeScirpt NFT Metadata Parser</strong>
+    <strong>TypeScript NFT Metadata Parser</strong>
 </p>
 <p align="center">
     <img src="https://img.shields.io/github/stars/veblenco/nft.svg?style=flat-square"/>
@@ -14,13 +14,13 @@
 ## Features
 
 - ⚡️ Blasting fast
-- 🔒 TypeScript
+- 🔒 TypeScript ready
 - 🛠️ Tested
 - 🪽 Lightweight
-- 🔋 Batteries included
-- ⛓️ Multi-chain support
-- 💾 IPFS and Arweave support
-- 
+- ⛓️ Multi-chain
+- 🔌 Seamless extension to [Viem](https://viem.sh)
+- 💾 [IPFS](https://www.ipfs.com) and [Arweave](https://www.arweave.org)
+- 🖼️ [ERC 721](https://ethereum.org/developers/docs/standards/tokens/erc-721) and [ERC 1155](https://ethereum.org/developers/docs/standards/tokens/erc-1155)
 
 ## Usage
 
@@ -53,9 +53,13 @@ Response:
 
 ```json
 {
+    "name": "",
+    "symbol": "",
     "metadata": {
 
-    }
+    },
+    "image": "",
+    "imageData": ""
 }
 ```
 

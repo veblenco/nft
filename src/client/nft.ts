@@ -3,6 +3,7 @@ import { EIP165_ABI, ERC721_ABI, ERC1155_ABI } from '../abi/';
 import type { PublicClient } from 'viem';
 import type { NFT, NFTData } from '../lib/types';
 import { getNFTMetadata } from './nftMetadata';
+import { getNFTException } from './nftException';
 
 const nft = (
   client: PublicClient,
@@ -10,6 +11,8 @@ const nft = (
   arweaveURL: URL = new URL('https://arweave.net/')
 ): NFT => ({
   parseMetadata: async (address, tokenId) => {
+    const nftException = getNFTException(address, client.chain?.id);
+
     const supportsInterfaceContract = {
       address: address,
       abi: EIP165_ABI,

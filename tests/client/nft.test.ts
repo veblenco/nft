@@ -53,9 +53,23 @@ test('create nft extension', async () => {
     chain: mainnet,
     transport: http(),
   }).extend((client) => ({
-    nft: nft(client, new URL('https://cloudflare-ipfs.com'), new URL('https://arweave.net/')),
+    nft: nft(client),
   }));
 
   const metadata = await client.nft.parseMetadata(PRADA_TIME_CAPSULE_ADDRESS, 1n);
   expect(metadata).toEqual(expectResponse);
+});
+
+test('create nft extension with WETH', async () => {
+  const WETH_ADDRESS = getAddress('0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2');
+
+  const client = createPublicClient({
+    chain: mainnet,
+    transport: http(),
+  }).extend((client) => ({
+    nft: nft(client),
+  }));
+
+  const metadata = await client.nft.parseMetadata(WETH_ADDRESS, 1n);
+  expect(metadata).toBeNull();
 });

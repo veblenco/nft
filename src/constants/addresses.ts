@@ -4,7 +4,7 @@ export const SUPERRARE_ADDRESS = {
   [mainnet.id]: '0xb932a70A57673d89f4acfFBE830E8ed7f75Fb9e0',
 };
 
-export const HASHMASKS_CONTRACT = {
+export const HASHMASKS_CONTRACT_ADDRESS = {
   [mainnet.id]: '0xC2C747E0F7004F9E8817Db2ca4997657a7746928',
 };
 

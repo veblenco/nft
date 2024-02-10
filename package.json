@@ -9,19 +9,11 @@
     "coverage": "vitest run --coverage",
     "prepare": "husky"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/veblenco/nft.git"
-  },
   "keywords": [
     "typescript, nft, viem, veblen"
   ],
   "author": "Joe Blau <joe@veblen.co>",
   "license": "MIT",
-    "bugs": {
-    "url": "https://github.com/veblenco/nft/,issues"
-  },
-  "homepage": "https://github.com/veblenco/nft",
   "devDependencies": {
     "husky": "^9.0.10",
     "typescript": "^5.3.3",

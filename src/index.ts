@@ -1,6 +1,6 @@
-import type { NFT } from './client/nft';
+import type { NFT, NFTData } from 'src/lib/types';
 import { nft } from './client/nft';
 
-export type { NFT };
+export type { NFT, NFTData };
 
 export { nft };

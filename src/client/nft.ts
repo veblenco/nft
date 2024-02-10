@@ -1,11 +1,8 @@
 import { ERC1155_INTERFACE_ID, ERC721_INTERFACE_ID } from 'src/constants/eip165';
 import { EIP165_ABI, ERC721_ABI, ERC1155_ABI } from 'src/abi/';
-import type { Address, Client, PublicClient } from 'viem';
+import type { PublicClient } from 'viem';
 import { getHTTPURL } from 'src/lib/scheme';
-
-export type NFT = {
-  parseMetadata: (address: Address, tokenId: bigint) => Promise<any>;
-};
+import type { NFT, NFTData, NFTMetadata } from 'src/lib/types';
 
 const nft = (client: PublicClient, ipfsURL: URL, arweaveURL: URL): NFT => ({
   parseMetadata: async (address, tokenId) => {
@@ -60,45 +57,54 @@ const nft = (client: PublicClient, ipfsURL: URL, arweaveURL: URL): NFT => ({
       ],
     });
 
-    const name = contractResponse[0].result;
-    const symbol = contractResponse[1].result;
-    const tokenURI = new URL(contractResponse[2].result as string);
+    const nftMetadata = await getNFTMetadata(contractResponse, ipfsURL, arweaveURL);
 
-    let returnMetadata: any = {
+    const nftdata: NFTData = {
       address,
       chainId: client.chain?.id,
-      name,
-      symbol,
-      tokenURI: tokenURI.toString(),
+      ...nftMetadata,
     };
 
-    const httpURL = getHTTPURL(tokenURI, ipfsURL, arweaveURL);
-
-    if (httpURL === null) {
-      return null;
-    }
-    const metadataResponse = await fetch(httpURL);
-    const metadata = await metadataResponse.json();
-
-    if (metadata.name) {
-      returnMetadata.metadata = metadata;
-    }
-
-    const urlMetadataKeys = ['image', 'animation_url'];
-
-    for (const key of urlMetadataKeys) {
-      if (metadata[key]) {
-        const url = new URL(metadata[key], tokenURI);
-        const httpURL = getHTTPURL(url, ipfsURL, arweaveURL);
-        if (httpURL === null) {
-          return null;
-        }
-        returnMetadata[key] = httpURL.toString();
-      }
-    }
-
-    return returnMetadata;
+    return nftdata;
   },
 });
+
+const getNFTMetadata = async (rsponse: any, ipfsURL: URL, arweaveURL: URL): Promise<NFTMetadata> => {
+  const name = rsponse[0].result;
+  const symbol = rsponse[1].result;
+  const tokenURI = new URL(rsponse[2].result as string);
+
+  let nftMetadata: NFTMetadata = {
+    name,
+    symbol,
+    tokenURI: tokenURI.toString(),
+  };
+
+  const httpURL = getHTTPURL(tokenURI, ipfsURL, arweaveURL);
+
+  if (httpURL === null) {
+    return nftMetadata;
+  }
+  const metadataResponse = await fetch(httpURL);
+  const metadata = await metadataResponse.json();
+
+  if (metadata.name) {
+    nftMetadata.metadata = metadata;
+  }
+
+  const urlMetadataKeys: (keyof NFTMetadata)[] = ['image', 'animation_url'];
+
+  for (const key of urlMetadataKeys) {
+    if (metadata[key]) {
+      const url = new URL(metadata[key], tokenURI);
+      const httpURL = getHTTPURL(url, ipfsURL, arweaveURL);
+      if (httpURL === null) {
+        continue;
+      }
+      nftMetadata[key] = httpURL.toString();
+    }
+  }
+  return nftMetadata;
+};
 
 export { nft };

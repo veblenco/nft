@@ -4,16 +4,16 @@
         <img alt="veblenco/nft" src="./.github/img/nft-light.svg">
     </picture>
     <br>
-    <strong>TypeScript NFT Metadata Parser</strong>
+    TypeScript NFT Metadata Parser
 </p>
 <p align="center">
+    <img src="https://img.shields.io/badge/Language-TypeScript-blue.svg?style=flat-square"/>
     <img src="https://img.shields.io/github/stars/veblenco/nft.svg?style=flat-square"/>
     <img src="https://img.shields.io/github/license/veblenco/nft.svg?style=flat-square"/>
 </p>
 
 ## Features
 
-- ⚡️ Blasting fast
 - 🔒 TypeScript ready
 - 🛠️ Tested
 - 🪽 Lightweight
@@ -51,15 +51,64 @@ const metadata = await client.nft.parseMetadata(<nft-contract-address>, 1n);
 
 Response:
 
-```json
-{
-    "name": "",
-    "symbol": "",
-    "metadata": {
+Type
 
+```javascript
+export type NFTData = {
+    address: Address;
+    chainId: number;
+    name: string;
+    symbol: string;
+    tokenURI: string;
+    metadata?: any;
+    image?: string;
+    animation_url?: string;
+};
+```
+
+Example
+
+```javascript
+...
+const ptcAddress = getAddress("0x0e220A4F3957C17a2e780922DBC13Cb2C9aa4274")
+const tokenId = 1n
+await client.nft.parseMetadata(ptcAddress, tokenId;
+```
+
+```javascript
+{
+    address: '0x0e220A4F3957C17a2e780922DBC13Cb2C9aa4274',
+    chainId: 1,
+    name: 'Prada Timecapsule',
+    symbol: 'PTC',
+    tokenURI: 'ipfs://QmZdeE86Az7m5kroGZLyFTgWrd8QyLo21czRu8kbRzTNwE',
+    metadata: {
+        name: 'PRADA Timecapsule: June 2022 - Cass x Prada',
+        description:
+        'The Prada Timecapsule NFT is gifted alongside the physical...',
+        image: 'ipfs://QmVe4fv85rd8Zz6wBtAgyrnG6e9LqELWrtG7G86TsRzVJC',
+        animation_url: 'ipfs://QmTbtQkgsBV2Yy4Z1E6ySwjzdtjzeUAyV3SakqX4GBqU9S',
+        properties: {
+            color: {
+                name: 'Color',
+                value: 'Black',
+            },
+            item_number: {
+                name: 'Item number',
+                value: '1',
+            },
+            month: {
+                name: 'Month',
+                value: 'June',
+            },
+            year: {
+                name: 'Year',
+                value: '2022',
+            },
+        },
     },
-    "image": "",
-    "imageData": ""
+    image: 'https://cloudflare-ipfs.com/ipfs/QmVe4fv85rd8Zz6wBtAgyrnG6e9LqELWrtG7G86TsRzVJC',
+    animation_url: 'https://cloudflare-ipfs.com/ipfs/QmTbtQkgsBV2Yy4Z1E6ySwjzdtjzeUAyV3SakqX4GBqU9S',
 }
 ```
 

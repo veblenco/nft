@@ -84,22 +84,17 @@ const nft = (client: PublicClient, ipfsURL: URL, arweaveURL: URL): NFT => ({
       returnMetadata.metadata = metadata;
     }
 
-    if (metadata.image) {
-      const imageURL = new URL(metadata.image, tokenURI);
-      const httpImageURL = getHTTPURL(imageURL, ipfsURL, arweaveURL);
-      if (httpImageURL === null) {
-        return null;
-      }
-      returnMetadata.image = httpImageURL.toString();
-    }
+    const urlMetadataKeys = ['image', 'animation_url'];
 
-    if (metadata.animation_url) {
-      const animationURL = new URL(metadata.animation_url, tokenURI);
-      const httpAnimationURL = getHTTPURL(animationURL, ipfsURL, arweaveURL);
-      if (httpAnimationURL === null) {
-        return null;
+    for (const key of urlMetadataKeys) {
+      if (metadata[key]) {
+        const url = new URL(metadata[key], tokenURI);
+        const httpURL = getHTTPURL(url, ipfsURL, arweaveURL);
+        if (httpURL === null) {
+          return null;
+        }
+        returnMetadata[key] = httpURL.toString();
       }
-      returnMetadata.animationURL = httpAnimationURL.toString();
     }
 
     return returnMetadata;

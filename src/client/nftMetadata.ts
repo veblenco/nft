@@ -1,5 +1,5 @@
-import { getHTTPURL } from 'src/lib/scheme';
-import { NFTMetadata } from 'src/lib/types';
+import { getHTTPURL } from '../lib/scheme';
+import { NFTMetadata } from '../lib/types';
 
 export const getNFTMetadata = async (rsponse: any, ipfsURL: URL, arweaveURL: URL): Promise<NFTMetadata> => {
   const name = rsponse[0].result;

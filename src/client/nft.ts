@@ -1,7 +1,7 @@
-import { ERC1155_INTERFACE_ID, ERC721_INTERFACE_ID } from 'src/constants/eip165';
-import { EIP165_ABI, ERC721_ABI, ERC1155_ABI } from 'src/abi/';
+import { ERC1155_INTERFACE_ID, ERC721_INTERFACE_ID } from '../constants/eip165';
+import { EIP165_ABI, ERC721_ABI, ERC1155_ABI } from '../abi/';
 import type { PublicClient } from 'viem';
-import type { NFT, NFTData } from 'src/lib/types';
+import type { NFT, NFTData } from '../lib/types';
 import { getNFTMetadata } from './nftMetadata';
 
 const nft = (

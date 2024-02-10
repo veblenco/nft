@@ -4,10 +4,11 @@
   "description": "TypeScript NFT Metadata Parser",
   "main": "index.js",
   "scripts": {
-    "test": "vitest run",
-    "testwatch": "vitest",
     "coverage": "vitest run --coverage",
-    "prepare": "husky"
+    "prepare": "husky",
+    "test": "vitest run",
+    "test:cov": "vitest run --coverage",
+    "test:watch": "vitest"
   },
   "keywords": [
     "typescript",
@@ -18,6 +19,7 @@
   "author": "Joe Blau <joe@veblen.co>",
   "license": "MIT",
   "devDependencies": {
+    "@vitest/coverage-v8": "^1.2.2",
     "husky": "^9.0.10",
     "typescript": "^5.3.3",
     "vitest": "^1.2.2"
@@ -86,7 +88,7 @@
     "tinyspy": "^2.2.1",
     "type-detect": "^4.0.8",
     "ufo": "^1.4.0",
-    "viem": "^2.7.8",
+    "viem": "*",
     "vite": "^5.1.0",
     "vite-node": "^1.2.2",
     "which": "^2.0.2",

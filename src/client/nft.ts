@@ -40,6 +40,7 @@ const nft = (
 
     // set ABI and contract address based on the interface response
     const abi = interfaceResponse[0].result ? ERC721_ABI : ERC1155_ABI;
+    const functionName = interfaceResponse[0].result ? 'tokenURI' : 'uri';
 
     const nftContract = {
       address: address,
@@ -58,7 +59,7 @@ const nft = (
         },
         {
           ...nftContract,
-          functionName: 'tokenURI',
+          functionName: functionName,
           args: [tokenId],
         },
       ],

@@ -19,6 +19,8 @@
 - 🪽 Lightweight
 - 🔋 Batteries included
 - ⛓️ Multi-chain support
+- 💾 IPFS and Arweave support
+- 
 
 ## Usage
 
@@ -40,11 +42,21 @@ const client = createPublicClient({
     nft: nft(
         client, 
         new URL('https://cloudflare-ipfs.com'), 
-        new URL('https://arweave.net/')
+        new URL('https://arweave.net')
     ),
 }));
 
 const metadata = await client.nft.parseMetadata(<nft-contract-address>, 1n);
+```
+
+Response:
+
+```json
+{
+    "metadata": {
+
+    }
+}
 ```
 
 ## Supported NFT's

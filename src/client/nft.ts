@@ -1,10 +1,10 @@
-import type { Address, Client } from 'viem';
+import type { Address, Client, PublicClient } from 'viem';
 
 export type NFT = {
   parseMetadata: (address: Address, tokenId: bigint) => Promise<any>;
 };
 
-const nft = (client: Client, ipfsGateway: URL, arweaveGateway: URL): NFT => ({
+const nft = (client: PublicClient, ipfsGateway: URL, arweaveGateway: URL): NFT => ({
   parseMetadata: async (address, tokenId) => {
     return null;
   },

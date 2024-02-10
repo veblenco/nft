@@ -46,34 +46,14 @@ const client = createPublicClient({
     ),
 }));
 
-const metadata = await client.nft.parseMetadata(<nft-contract-address>, 1n);
+// Prada Timecapsule
+const ptcAddress = getAddress("0x0e220A4F3957C17a2e780922DBC13Cb2C9aa4274")
+const tokenId = 1n
+
+const metadata = await client.nft.parseMetadata(ptcAddress, tokenId);
 ```
 
 Response:
-
-Type
-
-```javascript
-export type NFTData = {
-    address: Address;
-    chainId: number;
-    name: string;
-    symbol: string;
-    tokenURI: string;
-    metadata?: any;
-    image?: string;
-    animation_url?: string;
-};
-```
-
-Example
-
-```javascript
-...
-const ptcAddress = getAddress("0x0e220A4F3957C17a2e780922DBC13Cb2C9aa4274")
-const tokenId = 1n
-await client.nft.parseMetadata(ptcAddress, tokenId;
-```
 
 ```javascript
 {

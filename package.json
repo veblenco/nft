@@ -1,7 +1,7 @@
 {
   "name": "nft",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "TypeScript NFT Metadata Parser",
   "main": "index.js",
   "scripts": {
     "test": "vitest run",
@@ -9,9 +9,19 @@
     "coverage": "vitest run --coverage",
     "prepare": "husky"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/veblenco/nft.git"
+  },
+  "keywords": [
+    "typescript, nft, viem, veblen"
+  ],
+  "author": "Joe Blau <joe@veblen.co>",
+  "license": "MIT",
+    "bugs": {
+    "url": "https://github.com/veblenco/nft/,issues"
+  },
+  "homepage": "https://github.com/veblenco/nft",
   "devDependencies": {
     "husky": "^9.0.10",
     "typescript": "^5.3.3",
@@ -19,5 +29,8 @@
   },
   "peerDependencies": {
     "viem": "*"
+  },
+  "directories": {
+    "test": "tests"
   }
 }

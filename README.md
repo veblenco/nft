@@ -39,11 +39,7 @@ const client = createPublicClient({
     chain: mainnet,
     transport: http(),
 }).extend((client) => ({
-    nft: nft(
-        client, 
-        new URL('https://cloudflare-ipfs.com'), 
-        new URL('https://arweave.net')
-    ),
+    nft: nft(client)
 }));
 
 // Prada Timecapsule
@@ -51,6 +47,16 @@ const ptcAddress = getAddress("0x0e220A4F3957C17a2e780922DBC13Cb2C9aa4274")
 const tokenId = 1n
 
 const metadata = await client.nft.parseMetadata(ptcAddress, tokenId);
+```
+
+Configure:
+
+You can specify your own IPFS Gateway or Arweave host passing them into the client.
+
+```javascript
+const ipfsGateway = new URL('https://cloudflare-ipfs.com');
+const arweaveHost = new URL('https://arweave.net')
+const nftClient = nft(client, ipfsGateway, arweaveHost);
 ```
 
 Response:

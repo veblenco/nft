@@ -36,3 +36,10 @@ test('test ipfsURLToGateway with index', async () => {
     new URL('https://cloudflare-ipfs.com/ipfs/QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/1')
   );
 });
+
+test('test ipfsURLToGateway incorrect url', async () => {
+  const tokenURI = new URL('https://cloudflare-ipfs.com/ipfs/QmTTcVQWpJvX2ewhbQr15dPurtnp35knWciRjKnDQaNin5');
+  const gateway = new URL('https://cloudflare-ipfs.com');
+  const gatewayURL = ipfsToHTTP(tokenURI, gateway);
+  expect(gatewayURL).toBeNull();
+});

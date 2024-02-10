@@ -18,7 +18,9 @@ import {
 } from 'src/constants/addresses';
 
 test('test SUPERRARE_ADDRESS', () => {
-  expect(SUPERRARE_ADDRESS[1]).toBe('0xb932a70A57673d89f4acfFBE830E8ed7f75Fb9e0');
+  const mainnetId = 1;
+  const address = SUPERRARE_ADDRESS[mainnetId];
+  expect(address).toBe('0xb932a70A57673d89f4acfFBE830E8ed7f75Fb9e0');
 });
 
 test('test DECENTRALAND_ADDRESS', () => {

@@ -1,7 +1,7 @@
 import { arweaveToHTTP } from './arweave';
 import { ipfsToHTTP } from './ipfs';
 
-export interface URLScheme {
+export enum URLScheme {
   IPFS = 'ipfs:',
   ARWEAVE = 'ar:',
   HTTP = 'http:',

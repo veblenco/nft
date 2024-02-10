@@ -4,7 +4,11 @@ import type { PublicClient } from 'viem';
 import type { NFT, NFTData } from 'src/lib/types';
 import { getNFTMetadata } from './nftMetadata';
 
-const nft = (client: PublicClient, ipfsURL: URL, arweaveURL: URL): NFT => ({
+const nft = (
+  client: PublicClient,
+  ipfsURL: URL = new URL('https://cloudflare-ipfs.com'),
+  arweaveURL: URL = new URL('https://arweave.net/')
+): NFT => ({
   parseMetadata: async (address, tokenId) => {
     const supportsInterfaceContract = {
       address: address,

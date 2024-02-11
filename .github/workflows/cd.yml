@@ -1,6 +1,5 @@
-name: Verify
-on:
-  create
+name: Continuous Delivery
+on: [push]
 jobs:
   test:
     name: Test

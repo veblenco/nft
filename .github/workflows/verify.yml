@@ -1,0 +1,14 @@
+name: Verify
+on:
+  create
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4.0.1
+        env:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: veblenco/nft

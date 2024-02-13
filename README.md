@@ -51,13 +51,20 @@ const metadata = await client.nft.parseMetadata(ptcAddress, tokenId);
 
 Configure:
 
-You can specify your own IPFS Gateway or Arweave host passing them into the client.
+You can specify your own IPFS Gateways or Arweave hosts passing them into the client. The library will automatically fallback to gateways in their listed order.
 
 ```javascript
-const ipfsGateway = new URL('https://cloudflare-ipfs.com');
-const arweaveHost = new URL('https://arweave.net')
-const nftClient = nft(client, ipfsGateway, arweaveHost);
+const ipfsGateways: URL[] = [
+    new URL('https://dweb.link'),
+    new URL('https://cloudflare-ipfs.com'),
+    new URL('https://ipfs.io'),
+    new URL('https://gateway.pinata.cloud')
+];
+const arweaveHosts: URL[] = [new URL('https://arweave.net')];
+const nftClient = nft(client, ipfsGateways, arweaveHosts);
 ```
+
+> ℹ️ [IPFS Gateway List](https://ipfs.github.io/public-gateway-checker/) - List of public IPFS gateways
 
 Response:
 

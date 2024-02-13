@@ -20,7 +20,7 @@ export const getScheme = (url: URL): URLScheme | null => {
   return null;
 };
 
-export const getHTTPURL = (tokenURI: URL, ipfsURL: URL, arweaveURL: URL): URL | null => {
+export const getHTTPURL = (tokenURI: URL, ipfsURLs: URL[], arweaveURLs: URL[]): (URL | null)[] => {
   const urlScheme = getScheme(tokenURI);
 
   if (urlScheme === null) {
@@ -29,12 +29,12 @@ export const getHTTPURL = (tokenURI: URL, ipfsURL: URL, arweaveURL: URL): URL | 
 
   switch (urlScheme) {
     case URLScheme.IPFS:
-      return ipfsToHTTP(tokenURI, ipfsURL);
+      return ipfsURLs.flatMap((ipfsURL) => ipfsToHTTP(tokenURI, ipfsURL));
     case URLScheme.ARWEAVE:
-      return arweaveToHTTP(tokenURI, arweaveURL);
+      return arweaveURLs.flatMap((arweaveURL) => arweaveToHTTP(tokenURI, arweaveURL));
     case URLScheme.HTTP:
     case URLScheme.HTTPS:
-      return tokenURI;
+      return [tokenURI];
     default:
       throw new Error('Invalid URL');
   }

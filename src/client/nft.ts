@@ -7,8 +7,8 @@ import { getNFTException } from './nftException';
 
 const nft = (
   client: PublicClient,
-  ipfsURL: URL = new URL('https://cloudflare-ipfs.com'),
-  arweaveURL: URL = new URL('https://arweave.net/')
+  ipfsURLs: URL[] = [new URL('https://cloudflare-ipfs.com')],
+  arweaveURLs: URL[] = [new URL('https://arweave.net/')]
 ): NFT => ({
   parseMetadata: async (address, tokenId) => {
     const nftException = getNFTException(address, client.chain?.id);
@@ -65,7 +65,7 @@ const nft = (
       ],
     });
 
-    const nftMetadata = await getNFTMetadata(contractResponse, ipfsURL, arweaveURL);
+    const nftMetadata = await getNFTMetadata(contractResponse, ipfsURLs, arweaveURLs);
 
     const nftData: NFTData = {
       address,

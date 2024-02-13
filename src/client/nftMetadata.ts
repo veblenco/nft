@@ -1,7 +1,7 @@
 import { getHTTPURL } from '../lib/scheme';
 import { NFTMetadata } from '../lib/types';
 
-export const getNFTMetadata = async (response: any, ipfsURL: URL, arweaveURL: URL): Promise<NFTMetadata> => {
+export const getNFTMetadata = async (response: any, ipfsURLs: URL[], arweaveURLs: URL[]): Promise<NFTMetadata> => {
   const name = response[0].result;
   const symbol = response[1].result;
   const tokenURI = new URL(response[2].result as string);
@@ -12,27 +12,37 @@ export const getNFTMetadata = async (response: any, ipfsURL: URL, arweaveURL: UR
     tokenURI: tokenURI.toString(),
   };
 
-  const httpURL = getHTTPURL(tokenURI, ipfsURL, arweaveURL);
+  const httpURLs: URL[] = getHTTPURL(tokenURI, ipfsURLs, arweaveURLs).filter((url): url is URL => url !== null);
 
-  if (httpURL === null) {
+  if (httpURLs.length === 0) {
     return nftMetadata;
   }
-  const metadataResponse = await fetch(httpURL);
-  const metadata = await metadataResponse.json();
 
-  nftMetadata.metadata = metadata;
+  for (const [index, httpURL] of httpURLs.entries()) {
+    try {
+      const metadataResponse = await fetch(httpURL);
+      const metadata = await metadataResponse.json();
 
-  const urlMetadataKeys: (keyof NFTMetadata)[] = ['image', 'animation_url'];
+      nftMetadata.metadata = metadata;
 
-  for (const key of urlMetadataKeys) {
-    if (metadata[key]) {
-      const url = new URL(metadata[key], tokenURI);
-      const httpURL = getHTTPURL(url, ipfsURL, arweaveURL);
-      if (httpURL === null) {
-        continue;
+      const urlMetadataKeys: (keyof NFTMetadata)[] = ['image', 'animation_url'];
+
+      for (const key of urlMetadataKeys) {
+        if (metadata[key]) {
+          const url = new URL(metadata[key], tokenURI);
+          const httpURLs: URL[] = getHTTPURL(url, ipfsURLs, arweaveURLs).filter((url): url is URL => url !== null);
+
+          if (httpURLs.length === 0) {
+            continue;
+          }
+          nftMetadata[key] = httpURLs[index].toString();
+        }
       }
-      nftMetadata[key] = httpURL.toString();
+      return nftMetadata;
+    } catch (error) {
+      console.error(`Failed to fetch metadata from ${httpURL}: ${error}`);
     }
   }
+
   return nftMetadata;
 };
